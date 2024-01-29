@@ -42,7 +42,7 @@ while ($true) {
             $isHodAlert = $alert.source -like "*[HOD]*"
 
             # Add warning if open for more than 2 minutes
-            $timeDifference = $currentTime - [System.DateTime]$alert.updatedAt # TODO: Na odwrót XD
+            $timeDifference = [System.DateTime]$alert.updatedAt - $currentTime
             if ($timeDifference.TotalMinutes -gt 2) {
                 # Check if the priority has changed
                 $previousPriority[$alert.id] = $previousPriority[$alert.id] -ne $alert.priority
